@@ -1,0 +1,30 @@
+version: '3'
+
+vars:
+  BINARY_NAME: ./bin/shellbot
+  MAIN_FILE: ./app/.
+
+tasks:
+  build:
+    desc: Cross-compile static binary for Linux (CGO disabled)
+    env:
+      GOOS: linux
+      GOARCH: amd64
+      CGO_ENABLED: 0
+    cmds:
+      - go build -ldflags="-s -w" -o {{.BINARY_NAME}} {{.MAIN_FILE}}
+
+  run:
+    desc: Run the Go bot
+    cmds:
+      - go run {{.MAIN_FILE}}
+
+  tidy:
+    desc: Clean and update dependencies
+    cmds:
+      - go mod tidy
+
+  clean:
+    desc: Remove built binaries
+    cmds:
+      - rm -f {{.BINARY_NAME}}
