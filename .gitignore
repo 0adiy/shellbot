@@ -1,0 +1,13 @@
+# Config and build files
+bin/
+
+# Task file cache
+.task/
+
+# IDE or editor specific files
+.idea/
+.vscode/
+*.swp
+
+# Linux system files
+*~
