@@ -13,10 +13,6 @@ type Config struct {
 }
 
 func LoadConfig() (*Config, error) {
-	// viper.SetConfigName("config") // Looking for config.yaml
-	// viper.SetConfigType("yaml")   // Expecting a YAML file
-	// viper.AddConfigPath(".")      // Search in the current directory
-
 	viper.SetConfigFile("./config.yaml")
 
 	if err := viper.ReadInConfig(); err != nil {
@@ -29,10 +25,12 @@ func LoadConfig() (*Config, error) {
 		return nil, err
 	}
 
-	// log
-	// fmt.Printf("%#v\n", config.Token)
-	// fmt.Printf("%#v\n", config.Prefix)
-	// fmt.Printf("%#v\n", config.Superusers)
+	if config.SuccessEmoji == "" {
+		config.SuccessEmoji = "✅"
+	}
+	if config.RejectedEmoji == "" {
+		config.RejectedEmoji = "❌"
+	}
 	return &config, nil
 }
 

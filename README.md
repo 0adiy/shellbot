@@ -32,13 +32,17 @@ Create a `config.yaml` file in `./bin/` dir (basically it needs to be in same fo
 prefix: "?"  # The prefix to trigger the bot
 token: "<Discord Bot Token>"  # Your Discord bot token
 superusers:
-  "user1": "757478713402064991"  # Replace with your Discord user IDs
-  "user2": "829417226040901652"  # keys (names) here don't matter but can be used for username
-  "user3": "418364415856082953"
+  user1: "757478713402064991"  # Replace with your Discord user IDs
+  user2: "829417226040901652"  # keys (names) here don't matter but can be used for username
+  user3: "418364415856082953"
+successEmoji: ":tickimp:1185261520842670121" # remember arrow barcket like < > are not used
+rejectedEmoji: ":crossimp:1185263122827710474" # only provide custom if needed (bot should be in server where this emoji is present)
 ```
 
 * Replace `<Discord Bot Token>` with your actual Discord bot token.
 * Replace the user IDs with the IDs of the users you want to designate as superusers (users who can execute commands).
+* successEmoji and rejectedEmoji are optional but pay attention to pattern, no brackets are requried, you can get a emoji name with code by putting a `\` before emoji and sending the message
+* The bot needs to be in the server where emojis are to use these
 
 ### 3. Build the Bot
 
