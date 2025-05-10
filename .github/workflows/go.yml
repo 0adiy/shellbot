@@ -6,6 +6,9 @@ on:
       - 'v*.*.*'
   workflow_dispatch:
 
+permissions:
+  contents: write     # Necessary to modify content (including creating releases)
+
 jobs:
   build:
     runs-on: ubuntu-latest
