@@ -59,7 +59,7 @@ func sendLargeMessage(out string, s *discordgo.Session, m *discordgo.MessageCrea
 		if i == MAX_CHUNKS-1 && len(out) > 0 {
 			chunk = chunk[:len(chunk)-3] + "..."
 		}
-		s.ChannelMessageSend(m.ChannelID, "```"+chunk+"```")
+		s.ChannelMessageSend(m.ChannelID, "```ansi"+chunk+"```")
 	}
 }
 
@@ -97,7 +97,7 @@ func handleShellExec(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	out, err := shell.CombinedOutput()
 	if err != nil {
-		errStrToSend := fmt.Sprintf("Error : ```\n%s\n```", err.Error())
+		errStrToSend := fmt.Sprintf("Error : ```ansi\n%s\n```", err.Error())
 		_, err = s.ChannelMessageSend(m.ChannelID, errStrToSend)
 		if err != nil {
 			fmt.Println("failed to send message", err.Error())
